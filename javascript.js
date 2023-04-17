@@ -27,7 +27,6 @@ const moves = generateGraph();
 
 function knightMoves(vertice_one, vertice_two) {
   const paths = [[vertice_one]]
-  let path;
   const visited = [JSON.stringify(vertice_one)]
 
   while (paths[0]) {
@@ -37,8 +36,7 @@ function knightMoves(vertice_one, vertice_two) {
     for (elem of connections) {
       if (!visited.includes(JSON.stringify(elem))) {
         if (elem[0] === vertice_two[0] && elem[1] === vertice_two[1]) {
-          path = current_path.concat([elem])
-          return path
+          return current_path.concat([elem])
         } else {
           visited.push(JSON.stringify(elem))
           paths.push(current_path.concat([elem]))
