@@ -25,10 +25,10 @@ function generateGraph() {
 
 const moves = generateGraph();
 
-function knightMoves(vertice_one, vertice_two, visited = []) {
+function knightMoves(vertice_one, vertice_two) {
   const paths = [[vertice_one]]
   let path;
-  visited = [JSON.stringify(vertice_one)]
+  const visited = [JSON.stringify(vertice_one)]
 
   while (paths[0]) {
     let current_path = paths.shift()
