@@ -26,20 +26,24 @@ function generateGraph() {
 const moves = generateGraph();
 
 function knightMoves(vertice_one, vertice_two) {
+  if (vertice_one[0] === vertice_two[0] && vertice_one[1] === vertice_two[1]) {
+    return [vertice_one]
+  }
+
   const paths = [[vertice_one]]
   const visited = [JSON.stringify(vertice_one)]
 
   while (paths[0]) {
-    let current_path = paths.shift()
-    const connections = moves.get(JSON.stringify(current_path[current_path.length - 1]))
+    let currentPath = paths.shift()
+    const connections = moves.get(JSON.stringify(currentPath[currentPath.length - 1]))
     
     for (elem of connections) {
       if (!visited.includes(JSON.stringify(elem))) {
         if (elem[0] === vertice_two[0] && elem[1] === vertice_two[1]) {
-          return current_path.concat([elem])
+          return currentPath.concat([elem])
         } else {
           visited.push(JSON.stringify(elem))
-          paths.push(current_path.concat([elem]))
+          paths.push(currentPath.concat([elem]))
         }
       }
     }
@@ -47,4 +51,4 @@ function knightMoves(vertice_one, vertice_two) {
   return null;
 }
 
-console.log(knightMoves([7, 0], [3, 4]));
+console.log(knightMoves([7, 0], [7, 2]));
